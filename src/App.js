@@ -4,12 +4,21 @@ import Confetti from 'react-confetti'
 import './App.css';
 
 class App extends Component {
+  state = {
+    confetti: false
+  }
+  confettiMe = () => {
+    this.setState({
+      confetti: !this.state.confetti
+    })
+  }
   render() {
+    console.log('click the balloon')
     return (
       <div>
-        <Confetti width="2000" height="1000"/>
         <ul>
-          <li><img src={balloon} className="App-logo" alt="balloon" /></li>
+          { this.state.confetti ? <Confetti width="2000" height="1000"/> : null }
+          <li><img onClick={this.confettiMe} src={balloon} className="App-logo" alt="balloon" /></li>
           <li>Thank You Marco</li>
         </ul>
       </div>
